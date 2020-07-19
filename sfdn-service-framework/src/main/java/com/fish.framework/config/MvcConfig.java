@@ -1,6 +1,6 @@
-package com.hope.config;
+package com.fish.framework.config;
 
-import com.hope.interceptor.TTOInterceptor;
+import com.fish.framework.interceptor.TTOInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

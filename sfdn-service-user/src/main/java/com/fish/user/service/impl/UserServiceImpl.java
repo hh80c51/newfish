@@ -4,6 +4,7 @@ import com.fish.framework.mybatis.service.impl.BaseServiceImpl;
 import com.fish.user.bean.User;
 import com.fish.user.mapper.UserMapper;
 import com.fish.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     private final UserMapper userMapper;
 
+    @Autowired
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
     }

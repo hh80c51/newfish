@@ -16,11 +16,8 @@ class SfdnServiceUserApplicationTests {
 
     @Test
     void contextLoads() {
-        User user = new User();
-        user.setName("hh");
-        user.setPassword("12345");
-        user.setPhone("13161518747");
-        userService.addUser(user);
+        User user = userService.selectById(1);
+        System.out.println(user.toString());
     }
 
 }
