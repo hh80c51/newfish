@@ -19,7 +19,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     private final UserMapper userMapper;
 
-    @Autowired
+    @Autowired(required=false)
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
     }

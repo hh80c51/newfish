@@ -1,5 +1,6 @@
 package com.fish.user.bean;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import io.swagger.annotations.ApiModel;
@@ -8,8 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Transient;
 
-@Data
-@EqualsAndHashCode(callSuper = false)
+
 @ApiModel(description = "资源数据对象")
 public class User implements Serializable {
     @ApiModelProperty(value = "扩展的id", name = "id",required = true)
@@ -25,4 +25,45 @@ public class User implements Serializable {
     @ApiModelProperty(value = "手机号码", name = "phone",required = true)
     private String phone;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

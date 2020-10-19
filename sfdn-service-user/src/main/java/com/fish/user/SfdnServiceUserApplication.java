@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages={"com.fish.user.*"})
-@MapperScan("com.fish.mapper")
+@MapperScan("com.fish.user.mapper")
 public class SfdnServiceUserApplication {
 
     public static void main(String[] args) {

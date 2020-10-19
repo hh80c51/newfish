@@ -3,9 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <modules>
-        <module>sharding-jdbc-simple</module>
-    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -124,11 +121,11 @@
         </dependency>
 
         <!-- 引入sharding-jdbc和springboot整合的jar包 -->
-        <dependency>
+<!--        <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
             <version>4.0.0-RC1</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>
