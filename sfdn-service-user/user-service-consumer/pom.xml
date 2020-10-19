@@ -16,8 +16,26 @@
             <artifactId>user-service-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+            </exclusion>
+        </exclusions>
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
