@@ -1,6 +1,7 @@
 package com.fish.user.service;
 
 import com.fish.user.bean.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -34,4 +35,6 @@ public interface UserService {
      * @param userId
      */
     void deleteUser(int userId);
+
+
 }

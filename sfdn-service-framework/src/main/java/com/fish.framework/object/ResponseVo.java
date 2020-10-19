@@ -1,10 +1,8 @@
-package com.hope.object;
+package com.fish.framework.object;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.hope.enums.ResponseStatusEnum;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,8 +16,6 @@ import java.util.List;
  * @微信公众号:低调小熊猫
  * @create:2018-10-22 14:12
  **/
-@Data
-@EqualsAndHashCode(callSuper = false)
 public class ResponseVo<T> {
     private Integer status;
     private String message;
@@ -42,5 +38,29 @@ public class ResponseVo<T> {
         } else {
             return JSONObject.toJSONString(this, SerializerFeature.WriteMapNullValue);
         }
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
     }
 }

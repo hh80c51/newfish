@@ -1,7 +1,5 @@
-package com.hope.properties;
+package com.fish.framework.properties;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -21,8 +19,6 @@ import java.util.List;
 @Component
 @Configuration
 @ConfigurationProperties(prefix = "hope.druid")
-@Data
-@EqualsAndHashCode(callSuper = false)
 @Order(-1)
 public class DruidProperties {
     private String username;
@@ -31,4 +27,52 @@ public class DruidProperties {
     private Boolean resetEnable = false;
     private List<String> allowIps;
     private List<String> denyIps;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getServletPath() {
+        return servletPath;
+    }
+
+    public void setServletPath(String servletPath) {
+        this.servletPath = servletPath;
+    }
+
+    public Boolean getResetEnable() {
+        return resetEnable;
+    }
+
+    public void setResetEnable(Boolean resetEnable) {
+        this.resetEnable = resetEnable;
+    }
+
+    public List<String> getAllowIps() {
+        return allowIps;
+    }
+
+    public void setAllowIps(List<String> allowIps) {
+        this.allowIps = allowIps;
+    }
+
+    public List<String> getDenyIps() {
+        return denyIps;
+    }
+
+    public void setDenyIps(List<String> denyIps) {
+        this.denyIps = denyIps;
+    }
 }

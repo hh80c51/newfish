@@ -1,10 +1,10 @@
-package com.hope.utils;
+package com.fish.framework.utils;
 
+import com.fish.framework.object.PageResultVo;
+import com.fish.framework.object.ResponseVo;
 import com.github.pagehelper.PageInfo;
 import com.hope.consts.CommonConst;
 import com.hope.enums.ResponseStatusEnum;
-import com.hope.object.PageResultVo;
-import com.hope.object.ResponseVo;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -87,4 +87,5 @@ public class ResultHopeUtil {
         }
         return tablePage(pageInfo.getTotal(), pageInfo.getList());
     }
+
 }

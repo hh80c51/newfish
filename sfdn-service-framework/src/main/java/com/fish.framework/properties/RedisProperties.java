@@ -1,7 +1,5 @@
-package com.hope.properties;
+package com.fish.framework.properties;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -19,8 +17,6 @@ import org.springframework.stereotype.Component;
 @Component
 @Configuration
 @ConfigurationProperties(prefix = "spring.redis")
-@Data
-@EqualsAndHashCode(callSuper = false)
 @Order(-1)
 public class RedisProperties {
 
@@ -37,4 +33,51 @@ public class RedisProperties {
      **/
     private Integer expire = 2592000;
 
+    public Integer getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(Integer database) {
+        this.database = database;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(Integer timeout) {
+        this.timeout = timeout;
+    }
+
+    public Integer getExpire() {
+        return expire;
+    }
+
+    public void setExpire(Integer expire) {
+        this.expire = expire;
+    }
 }

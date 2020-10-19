@@ -2,8 +2,6 @@ package com.fish.framework.mybatis.pojo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -19,8 +17,7 @@ import java.util.Date;
  * @author:aodeng
  * @create:2018-10-15 13:48
  **/
-@Data
-@EqualsAndHashCode(callSuper = false)
+
 @ApiModel(description = "通用实体类")
 public abstract class CommonEntity implements Serializable {
 

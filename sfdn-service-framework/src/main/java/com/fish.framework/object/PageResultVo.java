@@ -1,7 +1,4 @@
-package com.hope.object;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+package com.fish.framework.object;
 
 import java.util.List;
 
@@ -14,8 +11,6 @@ import java.util.List;
  * @微信公众号:低调小熊猫
  * @create:2018-10-22 15:16
  **/
-@Data
-@EqualsAndHashCode(callSuper = false)
 public class PageResultVo {
     private Long total;
     private List rows;
@@ -26,5 +21,21 @@ public class PageResultVo {
     }
 
     public PageResultVo() {
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public List getRows() {
+        return rows;
+    }
+
+    public void setRows(List rows) {
+        this.rows = rows;
     }
 }

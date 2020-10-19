@@ -1,17 +1,18 @@
 package com.fish.user.bean;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.Transient;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
+@Entity
+@Table(name="t_user")
 @ApiModel(description = "资源数据对象")
 public class User implements Serializable {
+    @Id
     @ApiModelProperty(value = "扩展的id", name = "id",required = true)
     @Column(name = "id")//指定不符合第3条规则的字段名
     private Integer id;
