@@ -6,7 +6,15 @@ spring:
     password: root
   main:
     allow-bean-definition-overriding: true
+  application:
+    name: user-door
 mybatis:
   type-aliases-package: com.fish.user.bean
 server:
   port: 8080
+
+#自定义中间件配置
+door:
+  enabled: true
+  userStr: 1001,aaaa,ccc #白名单用户ID，多个逗号隔开
+debug: true
