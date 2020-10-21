@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>sfdn-service-user</module>
+        <module>sfdn-service-demo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
