@@ -26,10 +26,6 @@ public class User implements Serializable {
     @ApiModelProperty(value = "手机号码", name = "phone",required = true)
     private String phone;
 
-    public User() {
-
-    }
-
     public Integer getId() {
         return id;
     }
@@ -59,12 +55,6 @@ public class User implements Serializable {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public User(String name, String password, String phone) {
-        this.name = name;
-        this.password = password;
         this.phone = phone;
     }
 

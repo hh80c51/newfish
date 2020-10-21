@@ -5,7 +5,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>sfdn-service-user</module>
-        <module>shardingjdbc</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

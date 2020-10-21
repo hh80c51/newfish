@@ -1,2 +1,0 @@
-#自动配置类要能加载，要将需要启动就加载的自动配置类，配置在META-INF/spring.factories
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.fish.user.config.StarterAutoConfigure
