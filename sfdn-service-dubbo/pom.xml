@@ -14,9 +14,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.fish</groupId>
-    <artifactId>sfdn-service-user</artifactId>
+    <artifactId>sfdn-service-dubbo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sfdn-service-user</name>
+    <name>sfdn-service-dubbo</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
