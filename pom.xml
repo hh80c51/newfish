@@ -8,6 +8,7 @@
         <module>sfdn-service-demo</module>
         <module>sfdn-service-dubbo</module>
         <module>sfdn-service-shardingjdbc</module>
+        <module>sfdn-service-eureka</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
