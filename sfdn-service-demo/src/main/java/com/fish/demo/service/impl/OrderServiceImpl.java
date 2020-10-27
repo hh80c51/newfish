@@ -12,6 +12,11 @@ import java.util.Map;
 public class OrderServiceImpl implements OrderService {
 
     @Override
+    public void storeAuditedOrder(Map params) {
+
+    }
+
+    @Override
     public void pushNC(Map params) {
 
     }
@@ -38,6 +43,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void pushCRM(Map params) {
+
+    }
+
+    @Override
+    public void auditPatchOrderRecord(Map params) {
 
     }
 }

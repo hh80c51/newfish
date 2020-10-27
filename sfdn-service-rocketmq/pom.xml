@@ -12,7 +12,7 @@
     <artifactId>sfdn-service-rocketmq</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>trade-order</module>
+        <module>trade-common</module>
     </modules>
     <dependencies>
         <dependency>
