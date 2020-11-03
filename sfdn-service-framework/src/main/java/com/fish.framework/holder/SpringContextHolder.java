@@ -1,4 +1,4 @@
-package com.hope.holder;
+package com.fish.framework.holder;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -7,12 +7,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * 这个类可以直接获取spring 配置文件中 所有引用（注入）到的bean对象
- *
- * @program:hope-boot
- * @author:aodeng
- * @blog:低调小熊猫(https://aodeng.cc)
- * @微信公众号:低调小熊猫
- * @create:2018-10-17 14:33
  **/
 @Component
 public class SpringContextHolder implements ApplicationContextAware {

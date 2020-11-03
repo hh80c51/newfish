@@ -18,13 +18,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * @program:hope-boot
- * @ClassName:TTOInterceptor
- * @author:aodeng
- * @blog:低调小熊猫(https://aodeng.cc)
- * @create:2019-04-12 13:24
- * @Description: TTO
- * @Version 1.0
+ *
  **/
 public class TTOInterceptor implements HandlerInterceptor {
 

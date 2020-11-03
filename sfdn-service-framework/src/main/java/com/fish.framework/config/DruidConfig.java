@@ -14,11 +14,7 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 
 /**
- * @program:hope-boot
- * @author:aodeng
- * @blog:低调小熊猫(https://aodeng.cc)
- * @微信公众号:低调小熊猫
- * @create:2018-10-17 11:32
+ * @blog:(https://aodeng.cc)
  **/
 @Configuration
 public class DruidConfig {

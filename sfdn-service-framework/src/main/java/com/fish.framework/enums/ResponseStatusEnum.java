@@ -1,15 +1,8 @@
-package com.hope.enums;
+package com.fish.framework.enums;
 
-/**
- * @program:hope-boot
- * @author:aodeng
- * @blog:低调小熊猫(https://aodeng.cc)
- * @微信公众号:低调小熊猫
- * @create:2018-10-22 14:16
- **/
 public enum ResponseStatusEnum {
     SUCCESS(200, "操作成功！"),
-    ERROR(500, "小熊猫提示：服务器未知错误！请联系作者！"),
+    ERROR(500, "服务器未知错误！请联系作者！"),
     UNAUTHORIZED(500, "尚未登录！"),
     FORBIDDEN(500, "您没有操作权限！"),
     NOT_FOUND(500, "资源不存在！"),

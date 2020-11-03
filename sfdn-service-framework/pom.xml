@@ -6,13 +6,18 @@
     <groupId>com.fish</groupId>
     <artifactId>sfdn-service-framework</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.24</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
-    <description>
-        低调小熊猫开源作品sfdn-service-boot 个人博客:https://aodeng.cc 微信公众号:低调小熊猫
-        框架代码
-    </description>
+    <description>框架代码</description>
 
     <!--继承父模板-->
     <parent>
