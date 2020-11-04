@@ -1,6 +1,5 @@
 package com.fish.user.service.impl;
 
-import com.fish.framework.mybatis.service.impl.BaseServiceImpl;
 import com.fish.user.bean.User;
 import com.fish.user.mapper.UserMapper;
 import com.fish.user.service.UserService;
@@ -15,7 +14,7 @@ import java.util.List;
  * @date 2020/7/16  15:18
  */
 @Service
-public class UserServiceImpl extends BaseServiceImpl<User> implements UserService {
+public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
 

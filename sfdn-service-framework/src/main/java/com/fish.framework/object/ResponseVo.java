@@ -2,7 +2,7 @@ package com.fish.framework.object;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.hope.enums.ResponseStatusEnum;
+import com.fish.framework.enums.ResponseStatusEnum;
 
 import java.util.Collection;
 import java.util.List;
