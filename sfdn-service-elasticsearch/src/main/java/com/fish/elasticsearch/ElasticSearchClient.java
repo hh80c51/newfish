@@ -1,4 +1,4 @@
-package com.fish.elasticsearch.util;
+package com.fish.elasticsearch;
 
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
@@ -31,6 +31,27 @@ import java.util.Map;
 public class ElasticSearchClient {
 
     public static void main(String[] args) throws IOException {
+        JestClient client = createClientConnect();
+        //创建一个索引
+        CreateIndex index = new CreateIndex.Builder("articles").build();
+        client.execute(index);
+        //创建一个映射
+        PutMapping putMapping = new PutMapping.Builder(
+                "articles",
+                "my_type",
+                "{ \"my_type\" : { \"properties\" : { \"message\" : {\"type\" : \"string\", \"store\" : \"yes\"} } } }"
+        ).build();
+        client.execute(putMapping);
+    }
+
+    /**
+     * @description 创建客户端连接工厂，取连接实例
+     * @param
+     * @return io.searchbox.client.JestClient
+     * @date 2020/11/4 22:50
+     * @author hh
+     */
+    public static JestClient createClientConnect(){
         JestClientFactory factory = new JestClientFactory();
         factory.setHttpClientConfig(new HttpClientConfig
                 .Builder("http://localhost:9200")
@@ -39,16 +60,7 @@ public class ElasticSearchClient {
                 .defaultMaxTotalConnectionPerRoute(2)
                 // and no more 20 connections in total
                 .maxTotalConnection(20)
-                        .build());
-        //创建一个索引
-        JestClient client = factory.getObject();
-//        client.execute(new CreateIndex.Builder("articles").build());
-        //创建一个映射
-        PutMapping putMapping = new PutMapping.Builder(
-                "articles",
-                "my_type",
-                "{ \"my_type\" : { \"properties\" : { \"message\" : {\"type\" : \"string\", \"store\" : \"yes\"} } } }"
-        ).build();
-        client.execute(putMapping);
+                .build());
+        return factory.getObject();
     }
 }
