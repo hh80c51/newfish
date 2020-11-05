@@ -1,5 +1,8 @@
 package com.fish.elasticsearch;
 
+import com.fish.elasticsearch.pool.ElasticSearchPool;
+import com.fish.elasticsearch.pool.ElasticSearchPoolConfig;
+import com.fish.elasticsearch.pool.HostAndPort;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
 import io.searchbox.client.config.HttpClientConfig;
@@ -17,10 +20,7 @@ import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * client初始化
@@ -28,10 +28,10 @@ import java.util.Map;
  * @description
  * @date 2020/11/3  23:54
  */
-public class ElasticSearchClient {
+public class EsClient {
 
     public static void main(String[] args) throws IOException {
-        JestClient client = createClientConnect();
+        JestClient client = jestClient();
         //创建一个索引
         CreateIndex index = new CreateIndex.Builder("articles").build();
         client.execute(index);
@@ -51,7 +51,7 @@ public class ElasticSearchClient {
      * @date 2020/11/4 22:50
      * @author hh
      */
-    public static JestClient createClientConnect(){
+    public static JestClient jestClient(){
         JestClientFactory factory = new JestClientFactory();
         factory.setHttpClientConfig(new HttpClientConfig
                 .Builder("http://localhost:9200")
@@ -62,5 +62,23 @@ public class ElasticSearchClient {
                 .maxTotalConnection(20)
                 .build());
         return factory.getObject();
+    }
+
+    public static RestHighLevelClient restHighLevelClient(){
+        return new RestHighLevelClient(
+        RestClient.builder(
+                new HttpHost("127.0.0.1", 9200, "http")));
+    }
+
+    public static ElasticSearchPool restHighLevelPoolClient(){
+        Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+        nodes.add(new HostAndPort("127.0.0.1:9200","127.0.0.1",9200,"http"));
+        ElasticSearchPoolConfig config = new ElasticSearchPoolConfig();
+        config.setConnectTimeMillis(8000);
+        config.setMaxTotal(100);
+        config.setClusterName("elasticsearch");
+        config.setNodes(nodes);
+        ElasticSearchPool pool = new ElasticSearchPool(config);
+        return pool;
     }
 }
