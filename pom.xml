@@ -10,7 +10,7 @@
         <module>sfdn-service-shardingjdbc</module>
         <module>sfdn-service-eureka</module>
         <module>sfdn-service-canal</module>
-        <module>sfdn-service-rocketmq</module>
+        <module>sfdn-service-mq</module>
         <module>sfdn-service-common</module>
         <module>sfdn-service-elasticsearch</module>
     </modules>
