@@ -33,8 +33,8 @@ public class EsClient {
     public static void main(String[] args) throws IOException {
         JestClient client = jestClient();
         //创建一个索引
-        CreateIndex index = new CreateIndex.Builder("articles").build();
-        client.execute(index);
+//        CreateIndex index = new CreateIndex.Builder("articles").build();
+//        client.execute(index);
         //创建一个映射
         PutMapping putMapping = new PutMapping.Builder(
                 "articles",
