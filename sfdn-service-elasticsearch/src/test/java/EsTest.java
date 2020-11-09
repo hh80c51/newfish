@@ -1,12 +1,9 @@
 import com.fish.elasticsearch.EsClient;
 import com.fish.elasticsearch.pool.ElasticSearchPool;
-import com.fish.elasticsearch.pool.ElasticSearchPoolConfig;
-import com.fish.elasticsearch.pool.HostAndPort;
-import org.elasticsearch.client.RestHighLevelClient;
+import com.fish.elasticsearch.service.EsCrudService;
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.IOException;
 
 /**
  * @ClassName EsTest
@@ -17,21 +14,33 @@ import java.util.Set;
  **/
 public class EsTest {
 
+    private EsCrudService esCrudService;
+
     @Test
-    public void connectClientTest(){
+    public void connectClientTest() throws IOException {
         long start = System.currentTimeMillis();
         ElasticSearchPool pool = EsClient.restHighLevelPoolClient();
         for(int i=0;i<1000;i++){
             //耗时(ms)：6829
-//            EsClient.restHighLevelClient();
+//            RestHighLevelClient client = EsClient.restHighLevelClient();
+//            client.close();
+
             //耗时(ms)：3146
-//            EsClient.jestClient();
+//            JestClient client = EsClient.jestClient();
+//            client.close();
+
             //耗时(ms)：2035
-            RestHighLevelClient client = pool.getResource();
-            pool.returnResource(client);
+//            RestHighLevelClient client = pool.getResource();
+//            pool.returnResource(client);
 
         }
         long end = System.currentTimeMillis();
         System.out.println("耗时(ms)："+(end-start));
     }
+
+    @Test
+    public void queryAll(){
+
+    }
+
 }
