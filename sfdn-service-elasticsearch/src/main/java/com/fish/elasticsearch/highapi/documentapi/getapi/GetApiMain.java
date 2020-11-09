@@ -21,7 +21,7 @@ public class GetApiMain {
 
         try{
             RestHighLevelClient client = HighLevelClient.getInstance();
-            GetRequest getRequest = new GetRequest("jingma2_test_log", "testlog", "1");
+            GetRequest getRequest = new GetRequest("mytest_user_log", "_doc", "1");
 
 //            getRequest.fetchSourceContext(FetchSourceContext.DO_NOT_FETCH_SOURCE);
 

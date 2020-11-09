@@ -21,9 +21,9 @@ public class MultiGetApiMain {
             RestHighLevelClient client = HighLevelClient.getInstance();
             MultiGetRequest multiGetRequest = new MultiGetRequest();
 
-            multiGetRequest.add(new MultiGetRequest.Item("jingma2_20180716","testlog","1"));
-            multiGetRequest.add(new MultiGetRequest.Item("jingma2_20180716","testlog","2"));
-            multiGetRequest.add(new MultiGetRequest.Item("jingma2_20180716","testlog","3"));
+            multiGetRequest.add(new MultiGetRequest.Item("mytest_user","_doc","1"));
+            multiGetRequest.add(new MultiGetRequest.Item("mytest_user","_doc","2"));
+            multiGetRequest.add(new MultiGetRequest.Item("mytest_user","_doc","3"));
 
             MultiGetResponse multiGetResponse = client.multiGet(multiGetRequest);
             MultiGetItemResponse[] itemResponses = multiGetResponse.getResponses();

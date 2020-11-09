@@ -19,13 +19,20 @@ public class SearchApiMain {
         searchApi();
     }
 
+    /**
+     * @description 条件查询
+     * @param
+     * @return void
+     * @date 2020/11/9 21:16
+     * @author hh
+     */
     public static void searchApi() throws IOException {
 
         RestHighLevelClient client = HighLevelClient.getInstance();
 
         try {
-            SearchRequest searchRequest = new SearchRequest("jingma2_test");//限定index
-            searchRequest.types("testlog");//限定type
+            SearchRequest searchRequest = new SearchRequest("mytest_user");//限定index
+            searchRequest.types("_doc");//限定type
 
             SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
             /*查询所有记录*/
@@ -34,7 +41,7 @@ public class SearchApiMain {
 
 
             /*根据匹配查询*/
-            QueryBuilder matchQueryBuilder = QueryBuilders.matchQuery("name", "风雷");
+            QueryBuilder matchQueryBuilder = QueryBuilders.matchQuery("_name", "EricE");
             /*设置中文分词器*/
 //            ((MatchQueryBuilder) matchQueryBuilder).analyzer("ik");
 //            ((MatchQueryBuilder) matchQueryBuilder).analyzer("ik_max_word");

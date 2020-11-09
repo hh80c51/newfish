@@ -1,9 +1,17 @@
 import com.fish.elasticsearch.EsClient;
 import com.fish.elasticsearch.pool.ElasticSearchPool;
 import com.fish.elasticsearch.service.EsCrudService;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.Client;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName EsTest
@@ -39,8 +47,6 @@ public class EsTest {
     }
 
     @Test
-    public void queryAll(){
-
-    }
+    public void queryAll(){}
 
 }

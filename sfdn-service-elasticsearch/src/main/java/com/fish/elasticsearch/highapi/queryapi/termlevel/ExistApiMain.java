@@ -28,7 +28,7 @@ public class ExistApiMain {
             searchSourceBuilder.from(0);
             searchSourceBuilder.size(1);
 
-            SearchRequest searchRequest = new SearchRequest("serverlog_20180701");//限定index
+            SearchRequest searchRequest = new SearchRequest("mytest_user");//限定index
             searchRequest.types("log");//限定type
             searchRequest.source(searchSourceBuilder);
 

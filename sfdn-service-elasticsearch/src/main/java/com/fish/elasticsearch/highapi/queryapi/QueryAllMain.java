@@ -13,6 +13,13 @@ import java.io.IOException;
 
 public class QueryAllMain {
 
+    /**
+     * @description 指定index和type下全部内容查询，也可以不指定，显示全部内容
+     * @param args
+     * @return void
+     * @date 2020/11/9 21:12
+     * @author hh
+     */
     public static void main(String[] args) throws IOException {
         RestHighLevelClient client = HighLevelClient.getInstance();
         try{
@@ -22,8 +29,8 @@ public class QueryAllMain {
             searchSourceBuilder.from(0);
             searchSourceBuilder.size(5);
 
-            SearchRequest searchRequest = new SearchRequest("serverlog_20180701");//限定index
-            searchRequest.types("log");//限定type
+            SearchRequest searchRequest = new SearchRequest("mytest_user");//限定index
+            searchRequest.types("_doc");//限定type
             searchRequest.source(searchSourceBuilder);
 
             SearchResponse searchResponse = client.search(searchRequest);
