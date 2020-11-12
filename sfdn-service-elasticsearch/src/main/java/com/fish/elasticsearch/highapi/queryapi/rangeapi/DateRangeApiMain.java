@@ -20,7 +20,7 @@ public class DateRangeApiMain {
     public static void dateRange1() throws IOException {
         RestHighLevelClient client = HighLevelClient.getInstance();
         try{
-            RangeQueryBuilder matchQueryBuilder = QueryBuilders.rangeQuery("ctm")
+            RangeQueryBuilder matchQueryBuilder = QueryBuilders.rangeQuery("_c_time")
                     .from("2018-07-01 07:27:59.733",true)
                     .to("2018-07-01 07:30:00.000",false);
 //            matchQueryBuilder.format("yyyy-MM-dd HH:mm:ss.SSS");//设置日期格式
@@ -32,7 +32,7 @@ public class DateRangeApiMain {
             searchSourceBuilder.size(5);
 
             SearchRequest searchRequest = new SearchRequest("mytest_user");//限定index
-            searchRequest.types("log");//限定type
+            searchRequest.types("_doc");//限定type
             searchRequest.source(searchSourceBuilder);
 
             SearchResponse searchResponse = client.search(searchRequest);

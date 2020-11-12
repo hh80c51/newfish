@@ -116,8 +116,8 @@ public class SqlParser {
             SQLBetweenExpr between = ((SQLBetweenExpr) expr);
             boolean isNotBetween = between.isNot(); // between or not between ?
             String testExpr = between.testExpr.toString();
-            String fromStr = between.beginExpr.toString();
-            String toStr = between.endExpr.toString();
+            String fromStr = between.beginExpr.toString().replace("'","");
+            String toStr = between.endExpr.toString().replace("'","");
             if (isNotBetween) {
                 bridge.must(QueryBuilders.rangeQuery(testExpr).lt(fromStr).gt(toStr));
             } else {
@@ -184,9 +184,11 @@ public class SqlParser {
         QueryBuilder queryBuilder;
         switch (operator) {
             case GreaterThanOrEqual:
+                rightExprStr = rightExprStr.replace("'", "");
                 queryBuilder = QueryBuilders.rangeQuery(leftExprStr).gte(rightExprStr);
                 break;
             case LessThanOrEqual:
+                rightExprStr = rightExprStr.replace("'", "");
                 queryBuilder = QueryBuilders.rangeQuery(leftExprStr).lte(rightExprStr);
                 break;
             case Equality:
@@ -195,10 +197,13 @@ public class SqlParser {
                 ((BoolQueryBuilder) queryBuilder).must(eqCond);
                 break;
             case GreaterThan:
-                queryBuilder = QueryBuilders.rangeQuery(leftExprStr).gt(rightExprStr);
+                rightExprStr = rightExprStr.replace("'", "");
+                queryBuilder = QueryBuilders.rangeQuery(leftExprStr).gt(rightExprStr).format("yyyy-MM-dd hh:mm:ss");
+//                queryBuilder = QueryBuilders.rangeQuery(leftExprStr).from(rightExprStr, true);
                 break;
             case LessThan:
-                queryBuilder = QueryBuilders.rangeQuery(leftExprStr).lt(rightExprStr);
+                rightExprStr = rightExprStr.replace("'", "");
+                queryBuilder = QueryBuilders.rangeQuery(leftExprStr).lt(rightExprStr).format("yyyy-MM-dd hh:mm:ss");
                 break;
             case NotEqual:
                 queryBuilder = QueryBuilders.boolQuery();
@@ -217,9 +222,13 @@ public class SqlParser {
                 break;
             case Like:
                 queryBuilder = QueryBuilders.boolQuery();
-                MatchPhraseQueryBuilder likeCond = QueryBuilders.matchPhraseQuery(leftExprStr,
-                        rightExprStr.replace("%", ""));
-                ((BoolQueryBuilder) queryBuilder).must(likeCond);
+                rightExprStr = rightExprStr.replace("%", "");
+                rightExprStr = rightExprStr.replace("'", "");
+//                MatchPhraseQueryBuilder likeCond = QueryBuilders.matchPhraseQuery(leftExprStr,
+//                        rightExprStr.replace("%", ""));
+//                ((BoolQueryBuilder) queryBuilder).must(likeCond);
+                WildcardQueryBuilder wildcardQueryBuilder = QueryBuilders.wildcardQuery(leftExprStr, "*"+rightExprStr+"*");
+                ((BoolQueryBuilder) queryBuilder).must(wildcardQueryBuilder);
                 break;
             case NotLike:
                 queryBuilder = QueryBuilders.boolQuery();

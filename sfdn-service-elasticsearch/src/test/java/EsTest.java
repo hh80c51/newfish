@@ -1,19 +1,25 @@
 import com.fish.elasticsearch.EsClient;
 import com.fish.elasticsearch.essql.SqlParser;
+import com.fish.elasticsearch.highapi.HighLevelClient;
 import com.fish.elasticsearch.pool.ElasticSearchPool;
 import com.fish.elasticsearch.service.EsCrudService;
+import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
+import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.SimpleFormatter;
 
 /**
  * @ClassName EsTest
@@ -50,7 +56,11 @@ public class EsTest {
 
     @Test
     public void queryAll() throws Exception {
-        String sql = "select * from user where name = 'Su' order by role_id";
+        String name = "'%unny'";
+//        String sql = "select * from user where _name = " +name + " and ( _role_id = 1 or _role_id = 2 ) and _role_id < 2";
+//        String sql = "select * from user where _role_id > 1 and _role_id <= 2";
+        String sql = "select * from user where _c_time > '2020-11-11 11:47:57' and _c_time < '2020-11-11 11:47:57'";
+//        String sql = "select * from user where _name like " +name;
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         try {
             searchSourceBuilder = new SqlParser(searchSourceBuilder).parse(sql);
@@ -58,6 +68,14 @@ public class EsTest {
             e.printStackTrace();
         }
         System.out.println(searchSourceBuilder);
+
+        RestHighLevelClient client = HighLevelClient.getInstance();
+        SearchRequest searchRequest = new SearchRequest("mytest_user");//限定index
+        searchRequest.types("_doc");//限定type
+        searchRequest.source(searchSourceBuilder);
+
+        SearchResponse searchResponse = client.search(searchRequest);
+        System.out.println(searchResponse);
 
     }
 
