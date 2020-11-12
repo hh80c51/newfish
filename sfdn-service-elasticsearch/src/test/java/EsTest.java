@@ -1,4 +1,5 @@
 import com.fish.elasticsearch.EsClient;
+import com.fish.elasticsearch.essql.SqlParser;
 import com.fish.elasticsearch.pool.ElasticSearchPool;
 import com.fish.elasticsearch.service.EsCrudService;
 import org.junit.Test;
@@ -39,7 +40,8 @@ public class EsTest {
     }
 
     @Test
-    public void queryAll(){
+    public void queryAll() throws Exception {
+        SqlParser.parse("select * from user where name = 'Su' order by role_id");
 
     }
 
