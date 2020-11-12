@@ -25,10 +25,10 @@ public class BulkApiMain {
             RestHighLevelClient client = HighLevelClient.getInstance();
             BulkRequest bulkRequest = new BulkRequest();
             for(int i=1;i<4;i++) {
-                bulkRequest.add(new IndexRequest("jingma2_20180716", "testlog", String.valueOf(i)).source(buildIndexData()));
+                bulkRequest.add(new IndexRequest("mytest_user", "_doc", String.valueOf(i)).source(buildIndexData()));
             }
-            bulkRequest.add(new DeleteRequest("jingma2_20180716", "testlog", "1"));
-            bulkRequest.add(new UpdateRequest("jingma2_20180716", "testlog", "2").doc(XContentType.JSON,"name","马靖2"));
+            bulkRequest.add(new DeleteRequest("mytest_user", "_doc", "1"));
+            bulkRequest.add(new UpdateRequest("mytest_user", "_doc", "2").doc(XContentType.JSON,"name","马靖2"));
 
             BulkResponse bulkResponse = client.bulk(bulkRequest);
             System.out.println(bulkResponse);

@@ -27,7 +27,7 @@ public class IndexApiMain {
         int count = 10000;
         StringBuilder content = new StringBuilder();
         for (int i=1; i<=count; i++){
-            IndexRequest indexRequest = new IndexRequest("jingma2_test", "testlog", String.valueOf(i));
+            IndexRequest indexRequest = new IndexRequest("mytest_user", "_doc", String.valueOf(i));
             int interestCount = random.nextInt(4)+1;
             Map<String,Object> data = new HashMap<String,Object>();
             data.put("name","马靖"+i);
@@ -52,7 +52,7 @@ public class IndexApiMain {
     }
 
     private static void index() throws IOException {
-        IndexRequest indexRequest = new IndexRequest("jingma2_test", "testlog", "1");
+        IndexRequest indexRequest = new IndexRequest("mytest_user", "_doc", "1");
         indexRequest.source(buildIndexData());
 
         RestHighLevelClient client = HighLevelClient.getInstance();

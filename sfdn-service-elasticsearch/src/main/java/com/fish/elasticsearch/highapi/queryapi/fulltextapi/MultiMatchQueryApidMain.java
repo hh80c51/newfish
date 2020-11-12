@@ -22,7 +22,7 @@ public class MultiMatchQueryApidMain {
             searchSourceBuilder.from(0);
             searchSourceBuilder.size(5);
 
-            SearchRequest searchRequest = new SearchRequest("serverlog_20180701");//限定index
+            SearchRequest searchRequest = new SearchRequest("mytest_user");//限定index
             searchRequest.types("log");//限定type
             searchRequest.source(searchSourceBuilder);
 

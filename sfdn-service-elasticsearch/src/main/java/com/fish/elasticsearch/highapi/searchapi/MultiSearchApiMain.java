@@ -18,6 +18,13 @@ public class MultiSearchApiMain {
         multiSearchApi();
     }
 
+    /**
+     * @description 多个索引库查询
+     * @param
+     * @return void
+     * @date 2020/11/9 22:55
+     * @author hh
+     */
     public static void multiSearchApi() throws IOException {
 
 
@@ -26,19 +33,19 @@ public class MultiSearchApiMain {
 
             MultiSearchRequest request = new MultiSearchRequest();
 
-            SearchRequest firstSearchRequest = new SearchRequest("jingma2_test");
-            firstSearchRequest.types("testlog");//限定type
+            SearchRequest firstSearchRequest = new SearchRequest("mytest_user");
+            firstSearchRequest.types("_doc");//限定type
             SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-            searchSourceBuilder.query(QueryBuilders.matchQuery("name", "李永虎"));
+            searchSourceBuilder.query(QueryBuilders.matchQuery("_name", "EricE"));
             searchSourceBuilder.from(0);
             searchSourceBuilder.size(5);
             firstSearchRequest.source(searchSourceBuilder);
             request.add(firstSearchRequest);
 
-            SearchRequest secondSearchRequest = new SearchRequest("jingma2_test");
-            secondSearchRequest.types("testlog");//限定type
+            SearchRequest secondSearchRequest = new SearchRequest("mytest_user");
+            secondSearchRequest.types("_doc");//限定type
             searchSourceBuilder = new SearchSourceBuilder();
-            searchSourceBuilder.query(QueryBuilders.matchQuery("interests", "跳舞"));
+            searchSourceBuilder.query(QueryBuilders.matchQuery("_role_id", 1));
             searchSourceBuilder.from(0);
             searchSourceBuilder.size(5);
             secondSearchRequest.source(searchSourceBuilder);

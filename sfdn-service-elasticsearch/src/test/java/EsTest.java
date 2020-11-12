@@ -2,9 +2,18 @@ import com.fish.elasticsearch.EsClient;
 import com.fish.elasticsearch.essql.SqlParser;
 import com.fish.elasticsearch.pool.ElasticSearchPool;
 import com.fish.elasticsearch.service.EsCrudService;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.Client;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName EsTest
@@ -41,7 +50,14 @@ public class EsTest {
 
     @Test
     public void queryAll() throws Exception {
-        SqlParser.parse("select * from user where name = 'Su' order by role_id");
+        String sql = "select * from user where name = 'Su' order by role_id";
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        try {
+            searchSourceBuilder = new SqlParser(searchSourceBuilder).parse(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(searchSourceBuilder);
 
     }
 

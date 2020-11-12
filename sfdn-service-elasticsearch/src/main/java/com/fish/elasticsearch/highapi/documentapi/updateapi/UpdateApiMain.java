@@ -19,7 +19,7 @@ public class UpdateApiMain {
     public static void main(String[] args) throws IOException {
         try{
             RestHighLevelClient client = HighLevelClient.getInstance();
-            UpdateRequest updateRequest = new UpdateRequest("jingma2_20180716", "testlog", "1");
+            UpdateRequest updateRequest = new UpdateRequest("mytest_user", "_doc", "1");
             updateRequest.doc(buildIndexData());//传递Map结构数据
             //updateRequest.doc(jsonString, XContentType.JSON);//传递json字符串
 
