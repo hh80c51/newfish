@@ -13,6 +13,7 @@
         <module>sfdn-service-mq</module>
         <module>sfdn-service-common</module>
         <module>sfdn-service-elasticsearch</module>
+        <module>sfdn-service-design</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
