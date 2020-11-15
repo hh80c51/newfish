@@ -1,4 +1,4 @@
-package com.hope.enums;
+package com.fish.framework.enums;
 
 /**
  * @program:hope-boot
