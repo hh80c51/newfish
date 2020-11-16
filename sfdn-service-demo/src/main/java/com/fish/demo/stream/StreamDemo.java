@@ -5,10 +5,11 @@ import com.fish.demo.bean.Point;
 import com.fish.demo.enums.Topic;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.junit.Test;
+import org.openjdk.jmh.annotations.Benchmark;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Year;
 import java.util.*;
 import java.util.function.BinaryOperator;
@@ -240,5 +241,87 @@ public class StreamDemo {
         Map<Topic, String> concatenatedTitlesByTopic = library.stream()
                 .collect(groupingBy(Book::getTopic,
                         mapping(Book::getTitle, joining(";"))));
+
+        //找到以字母表顺序排列的第1本书的标题
+        Optional<Book> first = library.stream()
+                .reduce(BinaryOperator.minBy(comparing(Book::getTitle)));
+
+        //找到每个主题中高度最高的书
+        Map<Topic, Optional<Book>> maxHeightByTopic = library.stream()
+                .collect(groupingBy(Book::getTopic,
+                        reducing(BinaryOperator.maxBy(comparing(Book::getHeight)))));
+        //计算出图书馆中每个主题下图书的数量
+        Map<Topic,Long> booksByTopic1 = library.stream()
+                .collect(groupingBy(Book::getTopic,
+                        reducing(0L, e-> 1L, Long::sum)));
+        /*
+        //判空问题
+        例1:
+        public String getCity(User user)  throws Exception{
+            if(user!=null){
+                if(user.getAddress()!=null){
+                    Address address = user.getAddress();
+                    if(address.getCity()!=null){
+                        return address.getCity();
+                    }
+                }
+            }
+            throw new Excpetion("取值错误");
+        }
+        //Java8写法
+        public String getCity(User user) throws Exception{
+            return Optional.ofNullable(user)
+                    .map(u-> u.getAddress())
+                    .map(a->a.getCity())
+                    .orElseThrow(()->new Exception("取指错误"));
+        }
+        //例2
+        if(user!=null){
+            dosomething(user);
+        }
+        JAVA8写法
+        Optional.ofNullable(user)
+            .ifPresent(u->{
+                dosomething(u);
+        })
+        例3
+        public User getUser(User user) throws Exception{
+            if(user!=null){
+                String name = user.getName();
+                if("zhangsan".equals(name)){
+                    return user;
+                }
+            }else{
+                user = new User();
+                user.setName("zhangsan");
+                return user;
+            }
+        }
+        //java8写法
+        public User getUser(User user) {
+            return Optional.ofNullable(user)
+                           .filter(u->"zhangsan".equals(u.getName()))
+                           .orElseGet(()-> {
+                                User user1 = new User();
+                                user1.setName("zhangsan");
+                                return user1;
+                           });
+        }
+        */
+    }
+
+    @Test
+    public void demo7(){
+        //递归地访问目录树，从当前目录开始，打印出每个文件的详细信息
+        Path start = new File(".").toPath();
+        try(Stream<Path> pathStream = Files.walk(start)){
+            pathStream
+                    .map(Path::toFile)
+                    .filter(File::isFile)
+                    .map(f -> f.getAbsolutePath() + " " + f.length())
+                    .forEachOrdered(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

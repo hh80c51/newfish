@@ -29,4 +29,8 @@ public class Book {
         this.pubDate = pubDate;
         this.height = height;
     }
+
+    public Book() {
+
+    }
 }

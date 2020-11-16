@@ -1,0 +1,6 @@
+connectionManager:
+  maxTotal: 200
+  defaultMaxPerRoute: 100
+  socketTimeout: 10000
+  connectTimeout: 5000
+  connectionRequestTimeout: 5000
