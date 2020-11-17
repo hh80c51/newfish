@@ -3,9 +3,7 @@ package com.fish.demo.stream;
 import com.fish.demo.bean.Book;
 import com.fish.demo.bean.Point;
 import com.fish.demo.enums.Topic;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.junit.Test;
-import org.openjdk.jmh.annotations.Benchmark;
 
 import java.io.*;
 import java.nio.file.Files;
