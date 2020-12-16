@@ -2,7 +2,6 @@ package com.fish.framework;
 
 import com.fish.framework.object.BaseConditionVo;
 import com.fish.framework.object.PageResultVo;
-import com.fish.framework.object.ResponseVo;
 import com.fish.framework.utils.BeanCopyUtils;
 import org.junit.Test;
 

@@ -16,18 +16,23 @@ import java.util.List;
  * @微信公众号:低调小熊猫
  * @create:2018-10-22 14:12
  **/
-public class ResponseVo<T> {
+public class ResponseVO<T> {
     private Integer status;
     private String message;
     private T data;
 
-    public ResponseVo(Integer status, String message, T data) {
+    public ResponseVO(Integer status, String message) {
+        this.status = status;
+        this.message = message;
+    }
+
+    public ResponseVO(Integer status, String message, T data) {
         this.status = status;
         this.message = message;
         this.data = data;
     }
 
-    public ResponseVo(ResponseStatusEnum status, T data) {
+    public ResponseVO(ResponseStatusEnum status, T data) {
         this(status.getCode(), status.getMessage(), data);
     }
 

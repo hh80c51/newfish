@@ -4,3 +4,12 @@ connectionManager:
   socketTimeout: 10000
   connectTimeout: 5000
   connectionRequestTimeout: 5000
+#redis配置
+spring:
+  redis:
+    host: 39.100.91.122
+    port: 6379
+    database: 0
+    timeout: 5000ms
+redisson:
+  timeout: 10000
