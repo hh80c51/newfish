@@ -3,6 +3,7 @@ package com.fish.demo.bean;
 import com.fish.demo.enums.Topic;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.Year;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class Book {
     private Topic topic;
     private Year pubDate;
     private double height;
+    private BigDecimal price;
 
     public Book(String title, List<String> authors, int[] pageCounts,  Year pubDate, double height, Topic topic) {
         this.title = title;

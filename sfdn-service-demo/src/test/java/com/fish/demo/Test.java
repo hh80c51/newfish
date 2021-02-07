@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -71,4 +72,16 @@ public class Test {
 
     */
 
+    @org.junit.Test
+    public void test(){
+        AtomicBoolean flag = new AtomicBoolean();
+        flag.set(false);
+        demo(flag);
+        System.out.println(flag.get());
+    }
+
+    private void demo(AtomicBoolean flag){
+        flag.set(true);
+
+    }
 }

@@ -6,6 +6,7 @@ import com.fish.demo.enums.Topic;
 import org.junit.Test;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Year;
@@ -170,7 +171,7 @@ public class StreamDemo {
         //图书馆中图书的标题集合
         Set<String> titles = library.stream()
                 .map(Book::getTitle)
-                .collect(Collectors.toSet());
+                .collect(toSet());
 
         //调试,peek可以对处于管道中间位置的流元素执行处理
         List multipleAuthoredHostories = library.stream()
@@ -252,6 +253,14 @@ public class StreamDemo {
         Map<Topic,Long> booksByTopic1 = library.stream()
                 .collect(groupingBy(Book::getTopic,
                         reducing(0L, e-> 1L, Long::sum)));
+
+        //计算出图书馆中每个主题下图书的数量的和
+        Map<Topic, BigDecimal> booksByTopic2 = library.stream()
+                .collect(groupingBy(Book::getTopic))
+                        .entrySet()
+                        .stream().collect(Collectors.toMap(Map.Entry::getKey,m->m.getValue()
+                        .stream().filter(d->Objects.nonNull(d.getPrice()))
+                        .map(Book::getPrice).reduce(BigDecimal.ZERO,BigDecimal::add)));
         /*
         //判空问题
         例1:
