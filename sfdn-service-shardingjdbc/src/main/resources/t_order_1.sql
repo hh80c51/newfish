@@ -26,3 +26,21 @@ CREATE TABLE `t_order_1` (
   `status` varchar(50) NOT NULL,
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `t_order_2`;
+CREATE TABLE `t_order_2` (
+  `order_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `price` decimal(10,2) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `t_order_3`;
+CREATE TABLE `t_order_3` (
+  `order_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `price` decimal(10,2) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
